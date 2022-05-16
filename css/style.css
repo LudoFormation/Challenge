@@ -1,60 +1,135 @@
 @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap');
 
+/* Variables */
 :root {
     --bg-soft-violet: #af67e9;
     --bg-soft-blue: #6565e7;
+    --hr-color: hsl(240, 5%, 91%);
+    --txt-hover: hsl(14, 88%, 65%);
+    --txt-grey: hsl(240, 6%, 50%)
 }
 
+/* Reset CSS */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
+/* Classes utilitaires */
 .text {
+    color: var(--txt-grey);
     font-weight: 400;
     font-size: 12px;
+    width: 100%;
+    padding-top: 15px;
+    transition: all 0.2s ease-in-out;
 }
+
 .gras {
+    color: #000;
     font-weight: 700;
 }
 
+.displayNone {
+    display: none;
+}
 
+.paddBottom20 {
+    padding-bottom: 20px;
+}
+
+.df {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.imgArrow {
+    width: 10px;
+    height: 8px;
+    object-position: bottom;
+    transition: transform 0.4s ease-in-out;
+}
+
+.arrowUp {
+    transform: rotate(-180deg);
+}
+
+/* Définition du Body: fond dégradé et Fles pour le centrage */
 body {
-    position: relative;
-    height: 100vh;
+    min-height: 110vh;
     background: var(--bg-soft-violet);
     background: linear-gradient(180deg, var(--bg-soft-violet) 0%, var(--bg-soft-blue) 100%);
     display: flex;
-    align-items: center;
     justify-content: center;
     font-family: 'Kumbh Sans', sans-serif;
 }
 
+hr {
+    border: 1px solid var(--hr-color);
+}
+
+/* Fond blanc */
 .container {
     width: 85%;
-    height: 66%;
     margin-left: auto;
     margin-right: auto;
     background-color: #fff;
-    border-radius:20px;
+    border-radius: 20px;
     position: absolute;
-    top:20%;
+    top: 18%;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+
 }
+
+/* Contenu texte */
 .content {
-    position: absolute;
-    top: 20%;
+    width: 100%;
     padding: 20px;
+    margin-top: -80px;
 }
+
+/* titre FAQ */
 .content h1 {
     text-align: center;
     font-size: 2rem;
     margin-bottom: 2rem;
     font-weight: 700;
 }
+/* Image d'illustration */
+.container .img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    position: relative;
+    top: -20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+}
 
+.container .img .imgShadow {
+    position: absolute;
+    background-image: url(../images/bg-pattern-mobile.svg);
+    width: 80%;
+    aspect-ratio: 16/9;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    top: 0;
+}
 
-
-
+.container .img .imgScreen {
+    position: absolute;
+    background-image: url(../images/illustration-woman-online-mobile.svg);
+    width: 100%;
+    aspect-ratio: 16/9;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    top: -50%;
+}
 
 .attribution {
     font-size: 11px;
@@ -63,4 +138,54 @@ body {
 
 .attribution a {
     color: hsl(228, 45%, 44%);
+}
+
+/* Media queries */
+/* Ecrans supérieurs à 375px */
+
+@media screen and (min-width: 375px) {
+    body {
+        min-height: 100vh;
+        align-items: center;
+    }
+
+    .container {
+        display: flex;
+        align-items: center;
+        height: 60vh;
+        position: relative;
+    }
+
+    .container h1 {
+        text-align: left;
+        position: absolute;
+        top: 10%;
+    }
+
+    .subtitle:hover {
+        color: var(--txt-hover);
+        cursor: pointer;
+        font-weight: 700;
+    }
+
+    .content {
+        width: 50%;
+        margin-top: 0;
+    }
+
+    .container .img {
+        width: 40%;
+        top: 0;
+        left: -10%;
+    }
+
+    .container .img .imgScreen {
+        width: 120%;
+        top: 0;
+    }
+
+    .container .img .imgShadow {
+        width: 100%;
+        top: 70%;
+    }
 }
